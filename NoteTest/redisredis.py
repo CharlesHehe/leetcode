@@ -1,5 +1,5 @@
 import logging
-from download import setup_download_dir, download_link, get_links
+from NoteTest.download import setup_download_dir, download_link, get_links
 import os
 from rq import Queue
 from redis import Redis

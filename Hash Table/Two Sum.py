@@ -1,5 +1,6 @@
 from typing import List
 
+
 # hash table to O(n)
 
 class Solution:

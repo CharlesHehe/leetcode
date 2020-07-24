@@ -1,9 +1,8 @@
-from download import get_links, setup_download_dir, download_link
-from functools import partial
-import os
 import logging
+import os
 from time import time
-from multiprocessing import Pool
+
+from NoteTest.download import setup_download_dir, get_links, download_link
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -16,11 +15,10 @@ def main():
     client_id = os.getenv('IMGUR_CLIENT_ID')
     if not client_id:
         raise Exception("Couldn't find IMGUR_CLIENT_ID environment variable!")
-    links = get_links(client_id)
     download_dir = setup_download_dir()
-    download = partial(download_link, download_dir)
-    with Pool(12) as p:
-        p.map(download, links)
+    links = get_links(client_id)
+    for link in links:
+        download_link(download_dir, link)
     logging.info('Took %s seconds', time() - ts)
 
 

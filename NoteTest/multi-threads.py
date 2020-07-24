@@ -1,4 +1,4 @@
-from download import get_links, setup_download_dir, download_link
+from NoteTest.download import get_links, setup_download_dir, download_link
 from threading import Thread
 import os
 from queue import Queue
