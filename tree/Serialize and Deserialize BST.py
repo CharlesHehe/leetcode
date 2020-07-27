@@ -17,7 +17,8 @@ class Codec:
         if not root: return ""
         return str(root.val) + ' ' + self.serialize(root.left) + ' ' + self.serialize(root.right)
 
-    def deserialize(self, data: str) -> TreeNode:
+    @classmethod
+    def deserialize(cls, data: str) -> TreeNode:
         """Decodes your encoded data to tree.
         """
         data = list(map(int, data.split()))
@@ -31,8 +32,7 @@ class Codec:
 
 
 if __name__ == "__main__":
-    codec = Codec()
-    codec.deserialize("1 2 4 5 3")
+    Codec.deserialize("1 2 4 5 3")
 # # Your Codec object will be instantiated and called as such:
 
 # codec.deserialize(codec.serialize(root))

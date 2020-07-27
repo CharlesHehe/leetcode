@@ -14,9 +14,10 @@ class BSTIterator:
         def in_order(root):
             while root is None:
                 return False
-            in_order(root.left)
             self.nodes.append(root.val)
+            in_order(root.left)
             in_order(root.right)
+
 
         in_order(root)
 
@@ -38,7 +39,30 @@ class BSTIterator:
         else:
             return False
 
+
 # Your BSTIterator object will be instantiated and called as such:
-# obj = BSTIterator(root)
-# param_1 = obj.next()
-# param_2 = obj.hasNext()
+tree = TreeNode(7)
+tree.left = TreeNode(3)
+tree.right = TreeNode(15)
+sub_tree = tree.right
+sub_tree.left = TreeNode(9)
+sub_tree.right = TreeNode(20)
+iterator = BSTIterator(tree)
+iterator.next()
+# // return 3
+iterator.next()
+# // return 7
+iterator.hasNext()
+# // return true
+iterator.next()
+# // return 9
+iterator.hasNext()
+# // return true
+iterator.next()
+# // return 15
+iterator.hasNext()
+# // return true
+iterator.next()
+# // return 20
+iterator.hasNext()
+# // return false
